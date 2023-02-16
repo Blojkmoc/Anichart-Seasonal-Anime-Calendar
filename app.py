@@ -59,7 +59,8 @@ def get_anime():
             except TypeError:
                 episode = 0
             try:
-                air_date = datetime.datetime.fromtimestamp(d['nextAiringEpisode']['airingAt'])
+                # the added timedelta is to account for the difference in timezone from the server from the actual timezone in SE Asia (GMT +8)
+                air_date = datetime.datetime.fromtimestamp(d['nextAiringEpisode']['airingAt']) + datetime.timedelta(hours=8)
                 air_date = air_date.strftime('%Y-%m-%d %H:%M:%S')
             except TypeError:
                 air_date = '2023-01-01 00:00:00'
