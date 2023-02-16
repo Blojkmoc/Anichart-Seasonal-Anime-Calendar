@@ -10,4 +10,5 @@ I have also host this on a free website on Azure below:
 https://seasonal-anime-calendar.azurewebsites.net/
 
 This is my personal project and there is no commercial purpose behind this. Hope that you will enjoy it. I will continue to update and add some UI features in the future
+
 16/2/2023
