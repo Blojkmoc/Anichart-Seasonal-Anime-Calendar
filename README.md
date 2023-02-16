@@ -7,6 +7,7 @@ that it gave me wasn't perfect, I still managed to debug some errors that it has
 for the current seasonal anime that is airing
 
 I have also host this on a free website on Azure below:
+
 https://seasonal-anime-calendar.azurewebsites.net/
 
 This is my personal project and there is no commercial purpose behind this. Hope that you will enjoy it. I will continue to update and add some UI features in the future
