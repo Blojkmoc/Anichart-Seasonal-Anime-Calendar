@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Anime Calendar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+    <style>
+        .fc-month-view span.fc-title{
+         white-space: normal;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Initialize the calendar
+            var calendar = $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+                },
+                defaultView: 'month',
+                defaultDate: new Date(),
+                navLinks: true,
+                editable: false,
+                eventLimit: true,
+                events: {{ events | tojson }},
+            });
+
+            // Refresh the events every 2 minutes
+            setInterval(function() {
+                $.getJSON('/events', function(data) {
+                    //console.log('Data feed: ', data)
+                    calendar.fullCalendar('removeEvents');
+                    calendar.fullCalendar('addEventSource', data);
+                    calendar.fullCalendar('rerenderEvents');
+                });
+            }, 10000);
+        });
+    </script>
+</head>
+<body>
+    <div id="calendar"></div>
+</body>
+</html>
